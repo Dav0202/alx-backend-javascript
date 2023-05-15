@@ -16,7 +16,7 @@ function countStudents(path) {
   get_student = get_student.map((item) => item.split(','));
 
   const NUMBER_OF_STUDENTS = get_student.length ? get_student.length - 1 : 0;
-  console.log(`Number of get_student: ${NUMBER_OF_STUDENTS}`);
+  console.log(`Number of student: ${NUMBER_OF_STUDENTS}`);
 
   const data_dict = {};
   for (const i in get_student) {
@@ -31,7 +31,7 @@ function countStudents(path) {
 
   for (const key of Object.keys(data_dict)) {
     console.log(
-      `Number of get_student in ${key}: ${data_dict[key].length}. List: ${data_dict[
+      `Number of student in ${key}: ${data_dict[key].length}. List: ${data_dict[
         key
       ].join(', ')}`,
     );
