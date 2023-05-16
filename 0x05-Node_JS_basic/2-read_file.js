@@ -31,9 +31,7 @@ function countStudents(path) {
 
   for (const key of Object.keys(data_dict)) {
     console.log(
-      `Number of student in ${key}: ${data_dict[key].length}. List: ${data_dict[
-        key
-      ].join(', ')}`,
+      `Number of students in ${key}: ${data_dict[key].length}. List: ${data_dict[key].join(', ')}`,
     );
   }
 }
