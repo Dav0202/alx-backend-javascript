@@ -7,39 +7,42 @@ function countStudents(path) {
         reject(Error('Cannot load the database'));
         return;
       }
-      const response = [];
+      const res = [];
       let msg;
 
-      const req = data.toString().split('\n');
+      const data = data.toString().split('\n');
 
-      let get_student = req.filter((item) => item);
+      let get_student = data.filter((item) => item);
 
       get_student = get_student.map((item) => item.split(','));
 
       const NUMBER_OF_STUDENTS = get_student.length ? get_student.length - 1 : 0;
       msg = `Number of students: ${NUMBER_OF_STUDENTS}`;
+      console.log(msg);
 
-      response.push(msg);
+      res.push(msg);
 
-      const data_dict = {};
+      const fields = {};
       for (const i in get_student) {
         if (i !== 0) {
-          if (!data_dict[get_student[i][3]]) data_dict[get_student[i][3]] = [];
+          if (!fields[get_student[i][3]]) fields[get_student[i][3]] = [];
 
-          data_dict[get_student[i][3]].push(get_student[i][0]);
+          fields[get_student[i][3]].push(get_student[i][0]);
         }
       }
 
-      delete data_dict.field;
+      delete fields.field;
 
-      for (const key of Object.keys(data_dict)) {
+      for (const key of Object.keys(fields)) {
         msg = `Number of students in ${key}: ${
-          data_dict[key].length
-        }. List: ${data_dict[key].join(', ')}`;
+          fields[key].length
+        }. List: ${fields[key].join(', ')}`;
 
-        response.push(msg);
+        console.log(msg);
+
+        res.push(msg);
       }
-      resolve(response);
+      resolve(res);
     });
   });
 }
